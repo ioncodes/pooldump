@@ -24,13 +24,13 @@ typedef struct _SYSTEM_BIGPOOL_ENTRY
 		UCHAR Tag[4];
 		ULONG TagUlong;
 	};
-} SYSTEM_BIGPOOL_ENTRY, *PSYSTEM_BIGPOOL_ENTRY;
+} SYSTEM_BIGPOOL_ENTRY, * PSYSTEM_BIGPOOL_ENTRY;
 
 typedef struct _SYSTEM_BIGPOOL_INFORMATION
 {
 	ULONG Count;
 	SYSTEM_BIGPOOL_ENTRY AllocatedInfo[ANYSIZE_ARRAY];
-} SYSTEM_BIGPOOL_INFORMATION, *PSYSTEM_BIGPOOL_INFORMATION;
+} SYSTEM_BIGPOOL_INFORMATION, * PSYSTEM_BIGPOOL_INFORMATION;
 
 typedef enum _SYSTEM_INFORMATION_CLASS
 {
@@ -49,16 +49,16 @@ template<class Routine>
 Routine GetProcAddress(
 	_In_ const wchar_t* Name)
 {
-    UNICODE_STRING routine{};
+	UNICODE_STRING routine{};
 	Routine ptr{};
 
-    RtlInitUnicodeString(&routine, Name);
+	RtlInitUnicodeString(&routine, Name);
 
-    ptr = reinterpret_cast<Routine>(
+	ptr = reinterpret_cast<Routine>(
 		MmGetSystemRoutineAddress(&routine));
 	STATUS_ASSERT(ptr != nullptr);
 
-    return ptr;
+	return ptr;
 }
 
 SYSTEM_BIGPOOL_INFORMATION* FetchPoolInformation()
