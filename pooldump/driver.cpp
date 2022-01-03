@@ -24,13 +24,13 @@ typedef struct _SYSTEM_BIGPOOL_ENTRY
 		UCHAR Tag[4];
 		ULONG TagUlong;
 	};
-} SYSTEM_BIGPOOL_ENTRY, * PSYSTEM_BIGPOOL_ENTRY;
+} SYSTEM_BIGPOOL_ENTRY, *PSYSTEM_BIGPOOL_ENTRY;
 
 typedef struct _SYSTEM_BIGPOOL_INFORMATION
 {
 	ULONG Count;
 	SYSTEM_BIGPOOL_ENTRY AllocatedInfo[ANYSIZE_ARRAY];
-} SYSTEM_BIGPOOL_INFORMATION, * PSYSTEM_BIGPOOL_INFORMATION;
+} SYSTEM_BIGPOOL_INFORMATION, *PSYSTEM_BIGPOOL_INFORMATION;
 
 typedef enum _SYSTEM_INFORMATION_CLASS
 {
@@ -38,10 +38,10 @@ typedef enum _SYSTEM_INFORMATION_CLASS
 } SYSTEM_INFORMATION_CLASS;
 
 typedef NTSTATUS(WINAPI* ZwQuerySystemInformation)(
-	_In_      SYSTEM_INFORMATION_CLASS SystemInformationClass,
-	_Inout_   PVOID                    SystemInformation,
-	_In_      ULONG                    SystemInformationLength,
-	_Out_opt_ PULONG                   ReturnLength);
+	_In_ SYSTEM_INFORMATION_CLASS SystemInformationClass,
+	_Inout_ PVOID SystemInformation,
+	_In_ ULONG SystemInformationLength,
+	_Out_opt_ PULONG ReturnLength);
 
 ZwQuerySystemInformation k_ZwQuerySystemInformation = nullptr;
 
@@ -86,9 +86,10 @@ SYSTEM_BIGPOOL_INFORMATION* FetchPoolInformation()
 	return query;
 }
 
-VOID DumpPools(VOID* ctx)
+VOID DumpPools(
+	_In_ VOID* Context)
 {
-	UNREFERENCED_PARAMETER(ctx);
+	UNREFERENCED_PARAMETER(Context);
 
 	OBJECT_ATTRIBUTES attributes{};
 	IO_STATUS_BLOCK statusBlock{};
