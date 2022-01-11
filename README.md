@@ -1,5 +1,5 @@
 # pooldump
-Attempts to dump all nonpaged `BigPool`s from kernel.
+Attempts to dump all nonpaged `BigPool`s from kernel. **WARNING**: Insanely retarded code.
 
 ## Usage
 ```shell
