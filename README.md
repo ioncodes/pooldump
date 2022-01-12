@@ -1,5 +1,7 @@
 # pooldump
-Attempts to dump all nonpaged `BigPool`s from kernel. **WARNING**: Insanely retarded code. This project can and will induce brain damage.
+Attempts to dump all nonpaged `BigPool`s from kernel.  
+
+**WARNING**: Insanely retarded code. This project can and will induce brain damage.
 
 ## Usage
 ```shell
